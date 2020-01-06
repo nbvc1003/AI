@@ -11,8 +11,8 @@ add_hist = tf.compat.v1.summary.scalar('add_scalar', add)
 mul_history = tf.compat.v1.summary.scalar('mul_scalar', mul)
 
 merged = tf.compat.v1.summary.merge_all()
+# merged = tf.compat.v1.summary.merge([add_hist, mul_history])# 위와 동일
 
-# merged = tf.compat.v1.summary.merge_all([add_hist, mul_history]) # 위와 동일
 with tf.compat.v1.Session() as sess:
     write = tf.compat.v1.summary.FileWriter("E:/nbvc/python/AI/ch09/log/sample_2", sess.graph)
     for i in range(100):
