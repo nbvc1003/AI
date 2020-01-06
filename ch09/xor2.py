@@ -1,6 +1,8 @@
 import tensorflow as tf
 import numpy as np
 
+# 2레이어 2개 w 일경우
+
 tf.compat.v1.disable_eager_execution()
 x_data = np.array([[0,0],[0,1],[1,0],[1,1]], dtype=np.float32)
 y_data = np.array([[0],[1],[1],[0]],dtype=np.float32)

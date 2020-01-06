@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-# 2레이어 10개 w 일경우
+# 4레이어 10개w 일경우
 tf.compat.v1.disable_eager_execution()
 x_data = np.array([[0,0],[0,1],[1,0],[1,1]], dtype=np.float32)
 y_data = np.array([[0],[1],[1],[0]],dtype=np.float32)
@@ -13,9 +13,18 @@ W1 = tf.Variable(tf.random.normal([2,10], name='weight1')) # w 의 가지수를 
 b1 = tf.Variable(tf.random.normal([10]), name='bias1')
 layer1 = tf.sigmoid(tf.matmul(X,W1) +b1) # 1차
 
-W2 = tf.Variable(tf.random.normal([10,1], name='weight2')) #
-b2 = tf.Variable(tf.random.normal([1]), name='bias2')
-hypothesis = tf.sigmoid(tf.matmul(layer1, W2) + b2) # 2차
+W2 = tf.Variable(tf.random.normal([10,10], name='weight2')) #
+b2 = tf.Variable(tf.random.normal([10]), name='bias2')
+layer2 = tf.sigmoid(tf.matmul(layer1, W2) + b2) # 2차
+
+W3 = tf.Variable(tf.random.normal([10,10], name='weight3')) # w 의 가지수를 5배로 늘렸을때
+b3 = tf.Variable(tf.random.normal([10]), name='bias3')
+layer3 = tf.sigmoid(tf.matmul(layer2,W3) +b3) # 1차
+
+W4 = tf.Variable(tf.random.normal([10,1], name='weight4')) #
+b4 = tf.Variable(tf.random.normal([1]), name='bias4')
+hypothesis = tf.sigmoid(tf.matmul(layer3, W4) + b4) # 2차
+
 
 cost = -tf.reduce_mean(Y*tf.math.log(hypothesis)+ (1-Y)* tf.math.log(1-hypothesis))
 train = tf.compat.v1.train.GradientDescentOptimizer(learning_rate=0.05).minimize(cost)
