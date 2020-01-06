@@ -1,7 +1,7 @@
 import tensorflow as tf
 # Variable로 변수를 생성하면 메모리를 사용
 tf.compat.v1.disable_eager_execution()
-# get_variable 이름이 같은 공간이 있으면 기존 공간 공용
+# get_variable 이름이 같은 공간에 있으면 기존 공간 공용
 def func1(x):
     w = tf.compat.v1.get_variable(name='w', shape=[1])
     b = tf.compat.v1.get_variable(name='b', shape=[1])
