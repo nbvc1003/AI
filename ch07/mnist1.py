@@ -1,7 +1,10 @@
 from tensorflow_core.examples import input_data
 import matplotlib.pyplot as plt
-mnist = input_data.read_data_sets('MNIST_data/', one_hot=True)
 
+# tf.data.Dataset 을 사용하여 데이터를 읽어온다.
+#https://hiseon.me/data-analytics/tensorflow/tensorflow-dataset/
+
+mnist = input_data.read_data_sets('MNIST_data/', one_hot=True)
 
 # train-images-idx3-ubyte.gz  : 숫자이미지 를 1, 784 배열로 만든 데이터
 # train-labels-idx1-ubyte.gz :

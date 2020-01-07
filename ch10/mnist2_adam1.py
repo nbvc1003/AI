@@ -59,12 +59,12 @@ b8 = tf.compat.v1.get_variable('b8', shape=[nb_classes])
 hypothesis = tf.nn.softmax(tf.matmul(layer7,W8) + b8)
 
 cost = tf.reduce_mean(-tf.reduce_sum(Y*tf.math.log(hypothesis), axis=1))
-train = tf.compat.v1.train.AdamOptimizer(learning_rate=0.01).minimize(cost)
+train = tf.compat.v1.train.AdamOptimizer(learning_rate=0.00001).minimize(cost)
 # cost_hist = tf.compat.v1.summary.scalar("cost", cost)
 is_correct = tf.equal(tf.math.argmax(hypothesis, 1), tf.math.argmax(Y,1))
 accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
 # acc_hist = tf.compat.v1.summary.scalar('accuracy', accuracy)
-training_epochs = 10 # 데이터 전체를 몇번 실행
+training_epochs = 5 # 데이터 전체를 몇번 실행
 batch_size = 10 # 한번에 실행할 단위
 with tf.compat.v1.Session() as sess:
     sess.run(tf.compat.v1.global_variables_initializer())
