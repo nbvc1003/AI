@@ -8,14 +8,15 @@ rc('font', family=font_name)
 faces_all = fetch_olivetti_faces()
 
 K = 20 # 20번호에 해당하는 사람 얼굴 사진
-pca3 = PCA(n_components=2) # 주성분 2개 분석
+pca3 = PCA(n_components=2) # 주성분 2개 를 찾아낸다.
 X3 = faces_all.data[faces_all.target==K]
 W3 = pca3.fit_transform(X3) # 위분석 결과를 토대로 X3의 차원 축소
 X32 = pca3.inverse_transform(W3) # 다시 차원 복귀 (결과적으로 주성분이 강조된 형태로)
 
+# .reshape(64, 64)  : 원래 이미지 형태로 복원
 face_mean = pca3.mean_.reshape(64, 64) # 평균 얼굴 이미지
-face_p1 = pca3.components_[0].reshape(64, 64)
-face_p2 = pca3.components_[1].reshape(64, 64)
+face_p1 = pca3.components_[0].reshape(64, 64) # 첫번째 특성
+face_p2 = pca3.components_[1].reshape(64, 64) # 두번째 특성
 
 N = 2 # 2행
 M = 5 # 5열
