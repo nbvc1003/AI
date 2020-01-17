@@ -54,12 +54,18 @@ model.add(Dense(units=2, input_dim=28*28, activation='relu'))
 model.add(Dense(units=10, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='sgd',metrics=['accuracy'])
 
+
+from keras.callbacks import EarlyStopping
+# patience값 만큼 더 증가후 중지..
+early_stop = EarlyStopping(patience=2)
+
 cust_hist = Customhistory()
+
 
 # 초기화를 제거 하기 위하여 epochs= 1000와 같이 할경우 model.reset_states() 가 작동
 
 model.fit(X_train, Y_train, epochs=40, batch_size=10, validation_data=(X_val, Y_val),
-          callbacks=[cust_hist])
+          callbacks=[cust_hist, early_stop])
 
 # 모델 학습 시각화
 import matplotlib.pyplot as plt
