@@ -12,7 +12,7 @@ image_gs = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 # 얼굴인식 파일 읽기
 casecade = cv2.CascadeClassifier(casecade_file)
-# scaleFactor=1.1 다양한 크기를 비교할때 원 이미지 사이즈에 scaleFactor 값을 곱해서 다양한 사이즈의 이미지 크기 비교
+# scaleFactor=1.1 다양한 크기로 비교할때 원 이미지 사이즈에 scaleFactor 값의 비율로 크기를 줄여가면서 비교
 face_list = casecade.detectMultiScale(image_gs, scaleFactor=1.01, minNeighbors=1, minSize=(150,150))
 if len(face_list) > 0 :
     print(face_list)
