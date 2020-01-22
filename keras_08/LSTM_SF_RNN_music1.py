@@ -59,7 +59,7 @@ model.add(Dense(one_hot_vec_size, activation='softmax'))
 
 #모델설정
 model.compile(loss= 'categorical_crossentropy', optimizer='adam', metrics=['accuracy'] )
-num_epochs = 1000
+num_epochs = 2000
 history = LossHistory()
 for epoch_idx in range(num_epochs):
     print("epoch_idx 번 :", epoch_idx)

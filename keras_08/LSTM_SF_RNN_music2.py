@@ -118,7 +118,7 @@ for si in seq_in:
     seq_in_featrues.append(features)
 for i in range(pred_count):
     sample_in = np.array(seq_in_featrues)
-    sample_in = np.reshape(sample_in, (1, 4, 2))  # 샘플 수, 타입스텝 수, 속성 수
+    sample_in = np.reshape(sample_in, (1, 4, 2))  # 샘플 수, 타임스텝 수, 속성 수
     pred_out = model.predict(sample_in)
     idx = np.argmax(pred_out)
     seq_out.append(idx2code[idx])
