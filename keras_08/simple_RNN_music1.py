@@ -88,7 +88,11 @@ for i in range(pred_count):
     seq_out.append(idx2code[idx]) # 인덱스를 코드로 변경
 print('seq_out 예측', seq_out)
 
-# 전곡 예측
+
+
+
+# 한소설로 전곡 예측
+# 예측해서 나온 결과 값을 다시 예측 베이스 데이터로 사용하는 방식
 seq_in = ['g8','e8','e4','f8']
 seq_out = seq_in
 
